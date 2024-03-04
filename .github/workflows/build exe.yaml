@@ -18,9 +18,9 @@ jobs:
     - name: Package Application
       uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        path: ./src
+        path: src
 
     - uses: actions/upload-artifact@v2
       with:
         name: Dns-changer
-        path: ./src/dist/windows
+        path: src/dist/windows

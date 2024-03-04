@@ -1,47 +1,31 @@
-name: Build and Release
+
+name: Package Application with Pyinstaller
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-
   build:
-    name: Build executable
-    runs-on: windows-latest
-    
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: 3.9
-        
-    - name: Install PyInstaller
-      run: pip install pyinstaller
-      
-    - name: Build executable
-      run: pyinstaller --onefile --uac-admin dns-changer.py
-      
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: executable
-        path: dist/dns-changer.exe
-        
-    - name: Download artifact
-      uses: actions/download-artifact@v3
-      with:
-        name: executable
 
-    - name: Create Release
-      uses: ncipollo/release-action@v1
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-windows@main
       with:
-        artifacts: "dns-changer.exe"
-        generateReleaseNotes: true
-# - name: Create Release
-#   uses: ncipollo/release-action@v1
-#   with:
-#     artifacts: "yourscript.exe"
-#     generateReleaseNotes: true
+        path: src
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: name-of-artifact
+        path: src/dist/windows
+
+- name: PyInstaller Windows
+      uses: JackMcKew/pyinstaller-action-windows@python3-10-pyinstaller-5-3
+      with:
+        path: src

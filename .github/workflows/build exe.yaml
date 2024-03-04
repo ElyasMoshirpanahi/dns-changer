@@ -34,10 +34,14 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: executable
-        
+
     - name: Create Release
-      uses: softprops/action-gh-release@v1
+      uses: ncipollo/release-action@v1
       with:
-        files: dns-changer.exe
-      env:
-        GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        artifacts: "dns-changer.exe"
+        generateReleaseNotes: true
+# - name: Create Release
+#   uses: ncipollo/release-action@v1
+#   with:
+#     artifacts: "yourscript.exe"
+#     generateReleaseNotes: true

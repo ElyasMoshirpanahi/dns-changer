@@ -30,12 +30,6 @@ jobs:
         name: executable
         path: dist/dns-changer.exe
         
-  release:
-    name: Create Release
-    needs: build
-    runs-on: ubuntu-latest
-    
-    steps:
     - name: Download artifact
       uses: actions/download-artifact@v3
       with:

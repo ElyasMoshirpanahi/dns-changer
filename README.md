@@ -1,4 +1,3 @@
-# pyinstaller-action-windows-example
- Example Repository for Windows PyInstaller Action <https://github.com/JackMcKew/pyinstaller-action-windows>
-
-This is an example repository for using a Github Action for building executables with PyInstaller <https://github.com/JackMcKew/pyinstaller-action-windows>.
+# Dns changer
+A simple python program that will change the dns of your network adapters (both wifi and ethernet) based
+on the availble dns list.
